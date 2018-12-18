@@ -120,9 +120,9 @@ def main():
         cleaned_pot = pcv.fill(bin_img=pot_region, size=100)
         combined[740:1500, 1000:1450] = cleaned_pot
     elif "z1" in args.image:
-        pot_region = combined[1370:1750, 1050:1420]
+        pot_region = combined[1350:1750, 1050:1420]
         cleaned_pot = pcv.fill(bin_img=pot_region, size=100)
-        combined[1370:1750, 1050:1420] = cleaned_pot
+        combined[1350:1750, 1050:1420] = cleaned_pot
     else:
         pcv.fatal_error("Image {0} has an unsupported zoom level.".format(args.image))
 
