@@ -1,0 +1,19 @@
+####################
+#
+# TASSEL-GBS hapmap2tree
+#
+####################
+
+universe         = vanilla
+getenv           = true
+notification     = Complete
+request_memory   = 2G
+
+executable       = ./tassel-5-standalone/run_pipeline.pl
+arguments        = -h camelina_hapmap_filtered.hmp.txt -tree Neighbor -treeSaveDistance false -export tree.nj.txt -exportType Text
+
+log              = $(Cluster).$(Process).hapmap2tree.log
+output           = $(Cluster).$(Process).hapmap2tree.out
+error            = $(Cluster).$(Process).hapmap2tree.error
+
+queue

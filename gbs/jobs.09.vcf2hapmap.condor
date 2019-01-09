@@ -1,0 +1,19 @@
+####################
+#
+# TASSEL-GBS vcf2hapmap
+#
+####################
+
+universe         = vanilla
+getenv           = true
+notification     = Complete
+request_memory   = 2G
+
+executable       = ./tassel-5-standalone/run_pipeline.pl
+arguments        = -fork1 -vcf camelina_hapmap_filtered.recode.vcf -export -exportType Hapmap -runfork1
+
+log              = $(Cluster).$(Process).vcf2hapmap.log
+output           = $(Cluster).$(Process).vcf2hapmap.out
+error            = $(Cluster).$(Process).vcf2hapmap.error
+
+queue

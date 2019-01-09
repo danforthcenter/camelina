@@ -1,0 +1,20 @@
+####################
+#
+# TASSEL-GBS GBSSeqToTagDBPlugin
+#
+####################
+
+universe         = vanilla
+getenv           = true
+notification     = Complete
+request_cpus     = 8
+request_memory   = 200G
+
+executable       = ./tassel-5-standalone/run_pipeline.pl
+arguments        = -Xms100G -Xmx200G -fork1 -GBSSeqToTagDBPlugin -e PstI -i . -db tassel_gbsv2.sqlite3 -k gbs_keys.txt -kmerLength 64 -minKmerL 20 -mnQS 20 -mxKmerNum 100000000 -endPlugin -runfork1
+
+log              = $(Cluster).$(Process).GBSSeqToTagDBPlugin.log
+output           = $(Cluster).$(Process).GBSSeqToTagDBPlugin.out
+error            = $(Cluster).$(Process).GBSSeqToTagDBPlugin.error
+
+queue

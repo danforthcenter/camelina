@@ -1,0 +1,20 @@
+####################
+#
+# TASSEL-GBS ProductionSNPCallerPluginV2
+#
+####################
+
+universe         = vanilla
+getenv           = true
+notification     = Complete
+request_cpus     = 8
+request_memory   = 200G
+
+executable       = ./tassel-5-standalone/run_pipeline.pl
+arguments        = -Xms100G -Xmx200G -fork1 -ProductionSNPCallerPluginV2 -e PstI -i . -db tassel_gbsv2.sqlite3 -k gbs_keys.txt -kmerLength 64 -o camelina_hapmap.vcf -endPlugin -runfork1
+
+log              = $(Cluster).$(Process).ProductionSNPCallerPluginV2.log
+output           = $(Cluster).$(Process).ProductionSNPCallerPluginV2.out
+error            = $(Cluster).$(Process).ProductionSNPCallerPluginV2.error
+
+queue

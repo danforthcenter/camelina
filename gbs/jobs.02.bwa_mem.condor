@@ -1,0 +1,20 @@
+####################
+#
+# TASSEL-GBS: bwa mem
+#
+####################
+
+universe         = vanilla
+getenv           = true
+notification     = Complete
+request_cpus     = 4
+request_memory   = 2G
+
+executable       = ./bin/bwa
+arguments        = mem -t 4 Camelina_sativa_v2.fasta tagsForAlign.fa.gz
+
+log              = $(Cluster).$(Process).bwa.mem.log
+output           = tagsForAlign.sam
+error            = $(Cluster).$(Process).bwa.mem.error
+
+queue

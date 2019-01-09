@@ -1,0 +1,20 @@
+####################
+#
+# TASSEL-GBS SNPQualityProfilerPlugin
+#
+####################
+
+universe         = vanilla
+getenv           = true
+notification     = Complete
+request_cpus     = 1
+request_memory   = 2G
+
+executable       = ./tassel-5-standalone/run_pipeline.pl
+arguments        = -fork1 -SNPQualityProfilerPlugin -db tassel_gbsv2.sqlite3 -statFile snp_quality_summary.csv -endPlugin -runfork1
+
+log              = $(Cluster).$(Process).SNPQualityProfilerPlugin.log
+output           = $(Cluster).$(Process).SNPQualityProfilerPlugin.out
+error            = $(Cluster).$(Process).SNPQualityProfilerPlugin.error
+
+queue

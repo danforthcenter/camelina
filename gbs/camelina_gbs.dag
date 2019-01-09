@@ -1,0 +1,26 @@
+# Camelina GBS DAG workflow file
+
+JOB GBSSeqToTagDBPlugin         jobs.00.GBSSeqToTagDBPlugin.condor
+JOB TagExportToFastqPlugin      jobs.01.TagExportToFastqPlugin.condor
+JOB bwa_mem                     jobs.02.bwa_mem.condor
+JOB SAMToGBSdbPlugin            jobs.03.SAMToGBSdbPlugin.condor
+JOB DiscoverySNPCallerPluginV2  jobs.04.DiscoverySNPCallerPluginV2.condor
+JOB SNPQualityProfilerPlugin    jobs.05.SNPQualityProfilerPlugin.condor
+JOB ProductionSNPCallerPluginV2 jobs.06.ProductionSNPCallerPluginV2.condor
+JOB vcftools_filter             jobs.07.vcftools_filter.condor
+JOB vcftools_plink              jobs.08.vcftools_plink.condor
+JOB vcf2hapmap                  jobs.09.vcf2hapmap.condor
+JOB plink                       jobs.10.plink.condor
+JOB hapmap2tree                 jobs.11.hapmap2tree.condor
+
+PARENT GBSSeqToTagDBPlugin         CHILD TagExportToFastqPlugin
+PARENT TagExportToFastqPlugin      CHILD bwa_mem
+PARENT bwa_mem                     CHILD SAMToGBSdbPlugin
+PARENT SAMToGBSdbPlugin            CHILD DiscoverySNPCallerPluginV2
+PARENT DiscoverySNPCallerPluginV2  CHILD SNPQualityProfilerPlugin
+PARENT SNPQualityProfilerPlugin    CHILD ProductionSNPCallerPluginV2
+PARENT ProductionSNPCallerPluginV2 CHILD vcftools_filter
+PARENT ProductionSNPCallerPluginV2 CHILD vcftools_plink
+PARENT vcftools_filter             CHILD vcf2hapmap
+PARENT vcf2hapmap                  CHILD hapmap2tree
+PARENT vcftools_plink              CHILD plink

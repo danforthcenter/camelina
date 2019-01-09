@@ -1,0 +1,20 @@
+####################
+#
+# TASSEL-GBS SAMToGBSdbPlugin
+#
+####################
+
+universe         = vanilla
+getenv           = true
+notification     = Complete
+request_cpus     = 1
+request_memory   = 2G
+
+executable       = ./tassel-5-standalone/run_pipeline.pl
+arguments        = -fork1 -SAMToGBSdbPlugin -i tagsForAlign.sam -db tassel_gbsv2.sqlite3 -aProp 0.0 -aLen 0 -minMAPQ 0 -endPlugin -runfork1
+
+log              = $(Cluster).$(Process).SAMToGBSdbPlugin.log
+output           = $(Cluster).$(Process).SAMToGBSdbPlugin.out
+error            = $(Cluster).$(Process).SAMToGBSdbPlugin.error
+
+queue

@@ -1,0 +1,20 @@
+####################
+#
+# TASSEL-GBS DiscoverySNPCallerPluginV2
+#
+####################
+
+universe         = vanilla
+getenv           = true
+notification     = Complete
+request_cpus     = 1
+request_memory   = 2G
+
+executable       = ./tassel-5-standalone/run_pipeline.pl
+arguments        = -fork1 -DiscoverySNPCallerPluginV2 -db tassel_gbsv2.sqlite3 -maxTagsCutSite 64 -mnLCov 0.1 -mnMAF 0.01 -ref Camelina_sativa_v2.fasta -sC 1 -eC 20 -endPlugin -runfork1
+
+log              = $(Cluster).$(Process).DiscoverySNPCallerPluginV2.log
+output           = $(Cluster).$(Process).DiscoverySNPCallerPluginV2.out
+error            = $(Cluster).$(Process).DiscoverySNPCallerPluginV2.error
+
+queue

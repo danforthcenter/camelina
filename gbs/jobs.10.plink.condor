@@ -1,0 +1,20 @@
+####################
+#
+# TASSEL-GBS plink
+#
+####################
+
+universe         = vanilla
+getenv           = true
+notification     = Complete
+request_cpus     = 1
+request_memory   = 2G
+
+executable       = ./bin/plink
+arguments        = --file camelina_hapmap_filtered --noweb --out camelina_hapmap.plink --make-bed
+
+log              = $(Cluster).$(Process).plink.log
+output           = $(Cluster).$(Process).plink.out
+error            = $(Cluster).$(Process).plink.error
+
+queue

@@ -1,0 +1,19 @@
+####################
+#
+# TASSEL-GBS vcftools
+#
+####################
+
+universe         = vanilla
+getenv           = true
+request_cpus     = 1
+request_memory   = 2G
+
+executable       = ./bin/structure.py
+arguments        = -K $(Process) --input=camelina_hapmap.plink --output=camelina_sativa.structure
+
+log              = $(Cluster).$(Process).structure.log
+output           = $(Cluster).$(Process).structure.out
+error            = $(Cluster).$(Process).structure.error
+
+queue 10

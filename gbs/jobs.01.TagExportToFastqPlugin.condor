@@ -1,0 +1,20 @@
+####################
+#
+# TASSEL-GBS TagExportToFastqPlugin
+#
+####################
+
+universe         = vanilla
+getenv           = true
+notification     = Complete
+request_cpus     = 1
+request_memory   = 2G
+
+executable       = ./tassel-5-standalone/run_pipeline.pl
+arguments        = -fork1 -TagExportToFastqPlugin -db tassel_gbsv2.sqlite3 -o tagsForAlign.fa.gz -c 1 -endPlugin -runfork1
+
+log              = $(Cluster).$(Process).TagExportToFastqPlugin.log
+output           = $(Cluster).$(Process).TagExportToFastqPlugin.out
+error            = $(Cluster).$(Process).TagExportToFastqPlugin.error
+
+queue
